@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>ServiceHub</title>
+</head>
+<body>
+  <div class="app-shell">
+    <div id="loginPage" class="page login-page">
+      <div class="login-panel">
+        <h1>ServiceHub Login</h1>
+        <div class="form-row">
+          <label for="usernameInput">Username</label>
+          <input id="usernameInput" type="text" placeholder="admin" />
+        </div>
+        <div class="form-row">
+          <label for="passwordInput">Password</label>
+          <input id="passwordInput" type="password" placeholder="password" />
+        </div>
+        <button id="loginButton" class="primary-btn">Sign In</button>
+        <div id="loginError" class="error-text"></div>
+      </div>
+    </div>
+
+    <div id="appPage" class="page hidden">
+      <aside class="sidebar">
+        <div class="sidebar-brand">ServiceHub</div>
+        <nav>
+          <button class="nav-button active" data-page="dashboard">Dashboard</button>
+          <button class="nav-button" data-page="requests">Requests</button>
+          <button class="nav-button" data-page="employees">Employees</button>
+          <button class="nav-button" data-page="news">News</button>
+        </nav>
+        <button id="logoutButton" class="sidebar-logout">Logout</button>
+      </aside>
+
+      <main class="content">
+        <section id="dashboardPage" class="inner-page">
+          <h2>Dashboard</h2>
+          <div class="card greeting-card">
+            <h3 id="dashboardGreeting">Welcome!</h3>
+            <p id="dashboardInfo">Use the menu to access requests, employees and news.</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label">Total requests</span>
+              <span id="totalRequests" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Open</span>
+              <span id="openRequests" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">In progress</span>
+              <span id="progressRequests" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Done</span>
+              <span id="doneRequests" class="stat-value">0</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="requestsPage" class="inner-page hidden">
+          <div class="page-header">
+            <h2>Requests</h2>
+            <div>
+              <select id="requestFilter" class="select-input">
+                <option value="all">All statuses</option>
+                <option value="open">Open</option>
+                <option value="in_progress">In progress</option>
+                <option value="done">Done</option>
+              </select>
+            </div>
+          </div>
+          <div class="card request-create-card">
+            <h3>Create request</h3>
+            <div class="form-row">
+              <input id="requestTitle" type="text" placeholder="Title" />
+            </div>
+            <div class="form-row">
+              <textarea id="requestDescription" placeholder="Description"></textarea>
+            </div>
+            <button id="createRequestButton" class="primary-btn">Create</button>
+            <div id="requestCreateError" class="error-text"></div>
+          </div>
+          <div id="requestsList" class="table-wrap"></div>
+        </section>
+
+        <section id="employeesPage" class="inner-page hidden">
+          <div class="page-header">
+            <h2>Employees</h2>
+            <input id="employeeSearch" type="text" placeholder="Search by username or email" />
+          </div>
+          <div id="employeesList" class="table-wrap"></div>
+        </section>
+
+        <section id="newsPage" class="inner-page hidden">
+          <div class="page-header">
+            <h2>News</h2>
+          </div>
+          <div id="newsCreateCard" class="card news-create-card hidden">
+            <h3>Add news</h3>
+            <div class="form-row">
+              <input id="newsTitle" type="text" placeholder="Title" />
+            </div>
+            <div class="form-row">
+              <textarea id="newsContent" placeholder="Content"></textarea>
+            </div>
+            <button id="createNewsButton" class="primary-btn">Save</button>
+            <div id="newsCreateError" class="error-text"></div>
+          </div>
+          <div id="newsList" class="table-wrap"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

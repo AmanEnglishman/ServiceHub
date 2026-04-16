@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: servicehub
+      POSTGRES_USER: servicehub
+      POSTGRES_PASSWORD: servicehub
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U servicehub"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    environment:
+      DATABASE_HOST: db
+      DATABASE_NAME: servicehub
+      DATABASE_USER: servicehub
+      DATABASE_PASSWORD: servicehub
+      DATABASE_PORT: 5432
+      DJANGO_DEBUG: '1'
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
