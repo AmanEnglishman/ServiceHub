@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1d2939;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #1f2937;
+    color: #fff;
+}
+
+.brand {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.nav-links a {
+    color: #e2e8f0;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card, .panel, .form-card, .auth-panel {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.button {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.3rem;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 0.9rem;
+    font-size: 1rem;
+    width: 100%;
+    background: #f8fafc;
+}
+
+textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.data-table th, .data-table td {
+    padding: 0.95rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.data-table th {
+    background: #f8fafc;
+}
+
+.news-item {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.news-meta {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: #475569;
+}
+
+.auth-panel {
+    max-width: 480px;
+    margin: 3rem auto;
+}
+
+.list-block {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-block li {
+    margin-bottom: 0.8rem;
+}

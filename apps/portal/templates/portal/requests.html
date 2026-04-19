@@ -1,0 +1,30 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<h1>Список заявок</h1>
+<p><a class="button" href="{% url 'portal-request-new' %}">Новая заявка</a></p>
+{% if requests %}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Статус</th>
+                <th>Автор</th>
+                <th>Создано</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in requests %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.get_status_display }}</td>
+                    <td>{{ item.created_by }}</td>
+                    <td>{{ item.created_at|date:'d.m.Y H:i' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Заявок пока нет. Создайте первую.</p>
+{% endif %}
+{% endblock %}

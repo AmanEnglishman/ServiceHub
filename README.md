@@ -19,17 +19,23 @@ Django REST API backend for the ServiceHub cross-platform client.
    - http://localhost:8000/api/
    - http://localhost:8000/api/docs/
 
-## Frontend запуск
+## Веб-интерфейс
 
-1. Перейти в папку с клиентом:
+1. Запустить проект:
    ```bash
-   cd frontend
+   docker-compose up --build
    ```
-2. Установить зависимости и запустить Electron:
+2. Применить миграции и создать суперпользователя:
    ```bash
-   npm install
-   npm start
+   docker compose exec backend python manage.py migrate
+   docker compose exec backend python manage.py createsuperuser
    ```
+3. Открыть в браузере:
+   - http://localhost:8000/
+   - http://localhost:8000/admin/
+   - http://localhost:8000/api/docs/
+
+> В проект добавлен простой Django-шаблонный интерфейс для работы с заявками и новостями без отдельного Electron-клиента.
 
 ## Структура
 

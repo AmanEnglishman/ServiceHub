@@ -1,0 +1,46 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<h1>Добро пожаловать в ServiceHub</h1>
+<div class="dashboard-grid">
+    <div class="card">
+        <h2>Статус системы</h2>
+        <p>Заявок всего: <strong>{{ request_count }}</strong></p>
+        <p>Новостей всего: <strong>{{ news_count }}</strong></p>
+    </div>
+    <div class="card">
+        <h2>Действия</h2>
+        <ul>
+            <li><a href="{% url 'portal-requests' %}">Просмотреть заявки</a></li>
+            <li><a href="{% url 'portal-request-new' %}">Создать новую заявку</a></li>
+            <li><a href="{% url 'portal-news' %}">Посмотреть новости</a></li>
+        </ul>
+    </div>
+</div>
+
+<section class="panel">
+    <h2>Свежие заявки</h2>
+    {% if recent_requests %}
+        <ul class="list-block">
+            {% for item in recent_requests %}
+                <li><strong>{{ item.title }}</strong> — {{ item.created_by }} • {{ item.status|title }} • {{ item.created_at|date:'d.m.Y H:i' }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Заявки ещё не добавлены.</p>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Последние новости</h2>
+    {% if recent_news %}
+        <ul class="list-block">
+            {% for news in recent_news %}
+                <li><strong>{{ news.title }}</strong> • {{ news.created_at|date:'d.m.Y H:i' }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Новости пока отсутствуют.</p>
+    {% endif %}
+</section>
+{% endblock %}

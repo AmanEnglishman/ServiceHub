@@ -1,0 +1,18 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<h1>Новая заявка</h1>
+<form method="post" class="form-card">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-field">
+        <label for="id_title">Название</label>
+        {{ form.title }}
+    </div>
+    <div class="form-field">
+        <label for="id_description">Описание</label>
+        {{ form.description }}
+    </div>
+    <button type="submit" class="button">Отправить заявку</button>
+</form>
+{% endblock %}

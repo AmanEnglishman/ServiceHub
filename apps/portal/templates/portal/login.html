@@ -1,0 +1,19 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<div class="auth-panel">
+    <h1>Вход в ServiceHub</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="id_username">Пользователь</label>
+            {{ form.username }}
+        </div>
+        <div class="form-field">
+            <label for="id_password">Пароль</label>
+            {{ form.password }}
+        </div>
+        <button type="submit" class="button">Войти</button>
+    </form>
+</div>
+{% endblock %}
